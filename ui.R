@@ -5,6 +5,7 @@ source("parts/body.R")
 
 ui <- dashboardPagePlus(
   header = header,
+  title = "Tarea técnica de redacción",
   sidebar = sidebar,
   body = body,
   sidebar_fullCollapse = F,

@@ -9,7 +9,9 @@ SidebarServer <- function(id, user) {
     function(input, output, session) {
       output$dynamic_sidebar <- renderMenu({
         sidebarMenu(
-          menuItem(text = "Home", icon = icon('home'), badgeLabel = "dev", badgeColor = "yellow", tabName = 'main',
+          menuItem(text = "Buscar", icon = icon('search'), badgeLabel = "dev", badgeColor = "yellow", tabName = 'search',
+                   selected = T),
+          menuItem(text = "Densidad", icon = icon('spider'), badgeLabel = "dev", badgeColor = "yellow", tabName = 'density',
                    selected = F)
         )
       })
