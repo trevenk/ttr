@@ -24,7 +24,11 @@ body <- dashboardBody(
       fluidPage(
         h1("Densidad de palabras"),
         fluidRow(
-          column(width = 5, uiOutput("select_articles"), actionBttn(inputId = "get_denisty", label = "Obtener densidad")),
+          column(
+            width = 5,
+            uiOutput("select_articles"),
+            actionBttn(inputId = "get_denisty", label = "Obtener densidad")
+          ),
           column(width = 6, uiOutput('density'))
         )
       )

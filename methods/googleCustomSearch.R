@@ -1,7 +1,7 @@
 searchInGoogle <- function(termino = "como aumentar tus clientes y ventas con instagram", location = "es") {
   api_key <- "AIzaSyCbddjTboNPJPsLiTcQqTYygpeD1VtHmsA"
   a <- GET(paste0("https://www.googleapis.com/customsearch/v1?key=", api_key, "&cx=7adacbaed12d22da5&q=", str_replace_all(termino, " ", "+"), "&gl=", location))
-  a <- content(a)
+  a <- httr::content(a)
   articulos <- data.frame(
     "title" = rep(NA, length(a$items)),
     "url" = rep(NA, length(a$items)),

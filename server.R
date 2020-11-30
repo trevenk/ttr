@@ -12,8 +12,8 @@ shinyServer(function(input, output, session) {
 
   output$select_articles <- renderUI({
     checkboxGroupInput(
-      inputId = "check_articulos", label =" Seleccionar artículos de interés", choiceNames = choices_df()$title, choiceValues = choices_df()$url,
-      selected = choices_df()$title[1], width = "100%"
+      inputId = "check_articulos", label =" Seleccionar artículos de interés", choiceNames = choices_df()$title,
+      choiceValues = choices_df()$url, selected = choices_df()$title[1], width = "100%"
     )
   })
 

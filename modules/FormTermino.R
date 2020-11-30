@@ -23,7 +23,7 @@ FormTerminoServer <- function(id) {
 
         termino <- input$termino
         location <- input$location
-        artic <<- searchInGoogle(termino = termino, location = location)
+        artic <- searchInGoogle(termino = termino, location = location)
 
         write.csv(x = artic, file = file.path(tempdir(), "articulos.csv"), row.names = F)
 
