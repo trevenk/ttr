@@ -1,0 +1,26 @@
+---
+title: "report"
+author: "Bryan Taylor"
+output: html_document
+params:
+  n: NA
+---
+
+### El segundo 
+```{r, echo=FALSE}
+###
+```
+
+### El tercero
+
+```{r, echo=FALSE}
+the_dens <- tryCatch({
+  lapply(1:length(params$n), function(i) {
+    if(params$n[[i]] != "wrong") {print(knitr::kable(params$n[[i]]))}
+  })
+}, error = function(e) {
+  as.character(e)
+})
+the_dens
+```
+

@@ -6,7 +6,7 @@ FormTerminoUI <- function(id) {
       column(width = 10, textInput(inputId = ns("termino"), label = "Inserta título del artículo", width = "100%")),
       column(width = 2, selectInput(inputId = ns("location"), label = "Ubicación", choices = c(
         "es", "ar", "bo", "cl", "co", "cr", "cu", "do", "ec", "mx", "py", "uy"
-      ))),
+      ), width = "100%")),
       actionBttn(inputId = ns("bt_termino"), label = "Evaluar", style = "material-flat", color = "success", size = "xs", block = T)
     ),
     column(
@@ -24,6 +24,9 @@ FormTerminoServer <- function(id) {
         termino <- input$termino
         location <- input$location
         artic <- searchInGoogle(termino = termino, location = location)
+        Sys.setenv(
+          "TERMINO" = termino
+        )
 
         write.csv(x = artic, file = file.path(tempdir(), "articulos.csv"), row.names = F)
 
