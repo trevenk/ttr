@@ -15,20 +15,26 @@ shinyServer(function(input, output, session) {
   })
 
   output$select_articles <- renderUI({
+    the_choices <- choices_df()
     checkboxGroupInput(
-      inputId = "check_articulos", label =" Seleccionar artículos de interés", choiceNames = choices_df()$title,
-      choiceValues = choices_df()$url, selected = choices_df()$title[1], width = "100%"
+      inputId = "check_articulos", label =" Seleccionar artículos de interés", choiceNames = the_choices$title,
+      choiceValues = 1:nrow(the_choices), selected = 1, width = "100%"
     )
   })
 
   observeEvent(input$get_denisty, {
-    url_list <- input$check_articulos
+    the_choices <- choices_df()
+    selected_choices <- input$check_articulos
+    print(paste0("Choices: ", str_flatten(selected_choices, ", ")))
+    url_list <- the_choices$url[as.numeric(c(selected_choices))]
+    titles_list <- the_choices$title[as.numeric(c(selected_choices))]
+    print(paste0("Selected list", titles_list, "  -->  ", url_list))
     density <- getDensity(url_list)
     best <- getBestDensity(density)
     output$density <- renderUI({
       lapply(1:length(density), function(i) {
         box(
-          width = 12, title = choices_df()$title[i], status = "success", solidHeader = T,
+          width = 12, title = titles_list[i], status = "success", solidHeader = T,
           HTML(text = format_table(density[[i]], format = "html"))
         )
       })
@@ -60,7 +66,7 @@ shinyServer(function(input, output, session) {
 
         Sys.sleep(2)
 
-        the_titles <- choices_df()$title
+        the_titles <- titles_list
         density <- density[density != "wrong"]
         density <- lapply(density, function(x) {
           x[1:10, ]

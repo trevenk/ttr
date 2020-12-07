@@ -8,6 +8,9 @@ body <- dashboardBody(
     <div class="gcse-search"></div>
          ')
   )),
+  fixedPanel(
+    top = 50, right = 50, actionBttn("restart", "Reiniciar búsqueda", icon = icon("sync-alt"), color = "royal", style = "material-circle")
+  ),
   #setSkin(skin = skin),
   tabItems(
     tabItem(
@@ -19,7 +22,9 @@ body <- dashboardBody(
         fluidRow(
           FormTerminoUI("termino_ui")
         )
-      )
+      ),
+      br(),
+      br()
     ),
     tabItem(
       tabName = "density",
@@ -34,12 +39,13 @@ body <- dashboardBody(
             actionBttn(inputId = "get_denisty", label = "Obtener densidad"),
             actionBttn(inputId = "informe_btn", label = "Generar Informe")
           ),
-          column(width = 7, actionBttn("restart", "Reiniciar búsqueda", icon = icon("sync-alt"), color = "royal", style = "material-circle"),
-                 uiOutput("informe_out"))
+          column(width = 7, uiOutput("informe_out"))
         ),
         hr(),
         column(width = 12, uiOutput('density'))
-      )
+      ),
+      br(),
+      br()
     ),
     tabItem(
       tabName = "report",
@@ -89,7 +95,9 @@ body <- dashboardBody(
   absolutePanel(
     bottom = "1%", right = "10px",
     fluidRow(
-      align = "right", h4("Desarrollado por: "), img(src = "https://precise-future-ws.s3.amazonaws.com/final.png", width = "50%")
+      align = "right", column(width = 8, ""),
+      column(width = 4, HTML(text = '<img src = "https://precise-future-ws.s3.amazonaws.com/final.png", width = "100%", title = "Precise-Future_logo",
+                             alt = "Logo de precise future" />'))
     )
   )
 )
