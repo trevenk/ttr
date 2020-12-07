@@ -9,7 +9,7 @@ body <- dashboardBody(
          ')
   )),
   fixedPanel(
-    top = 50, right = 50, actionBttn("restart", "Reiniciar búsqueda", icon = icon("sync-alt"), color = "royal", style = "material-circle")
+    top = 150, right = 50, actionBttn("restart", "Reiniciar búsqueda", icon = icon("sync-alt"), color = "royal", style = "material-circle")
   ),
   #setSkin(skin = skin),
   tabItems(
