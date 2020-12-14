@@ -55,15 +55,15 @@ body <- dashboardBody(
         column(width = 12, align = "center", h1("Resumen de la Tarea Técnica de Redacción")),
         box(
           width = 12, status = "info",
-          h3("Título del artículo: "),
+          h3("Título del Artículo: "),
           textOutput("r_title"),
           hr(),
           h3("Objetivo:"),
           tags$p(textOutput("r_aim")),
           hr(),
-          h3("URL Saliente: "),
-          textOutput("r_url_out"),
-          h3("URL del Artíclo/Slug: "),
+          h3("URL Entrante: "),
+          uiOutput("r_url_out"),
+          h3("URL del Artículo/Slug: "),
           textOutput("r_url")
         ),
         hr(),
@@ -96,7 +96,7 @@ body <- dashboardBody(
     bottom = "1%", right = "10px",
     fluidRow(
       align = "right", column(width = 8, ""),
-      column(width = 4, HTML(text = '<img src = "https://precise-future-ws.s3.amazonaws.com/final.png", width = "100%", title = "Precise-Future_logo",
+      column(width = 4, HTML(text = '<img src = "https://precise-future-ws.s3.amazonaws.com/final.png", width = "60%", title = "Precise-Future_logo",
                              alt = "Logo de precise future" />'))
     )
   )
