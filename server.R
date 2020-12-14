@@ -90,7 +90,7 @@ shinyServer(function(input, output, session) {
         })
 
         output$r_url_out <- renderUI({
-          sp <- "unavaca, dos camellos,y una torre"##Sys.getenv("URL_OUT")
+          sp <- Sys.getenv("URL_OUT")
           tags$ul(lapply(str_trim(str_squish(unlist(str_split(sp, ",")))), function(x) {
             tags$li(x)
           }))
